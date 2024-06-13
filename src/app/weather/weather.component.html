@@ -1,0 +1,23 @@
+<div class="container">
+    <img src="/logo.png" alt="Logo" class="logo" />
+    <div class="form-group">
+      <input [(ngModel)]="location" class="form-control" placeholder="Enter city name" maxlength="30" />
+      <button (click)="getWeather()" class="btn btn-primary">Get Weather</button>
+    </div>
+    <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+    <div *ngIf="weatherData" class="weather-cards">
+      <div *ngFor="let day of weatherData.forecast.forecastDays" class="weather-card">
+        <h3 class="date">{{ day.date }}</h3>
+        <p class="weather-detail">Max temperature: {{ day.day.maxTempC }}°C</p>
+        <p class="weather-detail">Min temperature: {{ day.day.minTempC }}°C</p>
+        <p class="weather-detail">Average temperature: {{ day.day.avgTempC }}°C</p>
+        <p class="weather-detail">Max wind speed: {{ day.day.maxWindKph }} kph</p>
+        <p class="weather-detail">Precipitation: {{ day.day.totalPrecipitationMm }} mm</p>
+        <p class="weather-detail">Snowfall: {{ day.day.totalSnowfallCm }} cm</p>
+        <p class="weather-detail">Humidity: {{ day.day.avgHumidity }}%</p>
+        <p class="weather-detail">Visibility: {{ day.day.avgVisibilityKm }} km</p>
+        <p class="weather-detail">UV index: {{ day.day.uv }}</p>
+      </div>
+    </div>
+  </div>
+  
